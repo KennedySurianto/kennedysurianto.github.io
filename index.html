@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy Surianto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <p>Welcome to <u>Kennedy Surianto</u>'s Portfolio</p>
+        <p>Type 'help' for a list of commands.</p>
+        <div class="output" id="output"></div> <!-- Output area -->
+
+        <!-- Suggestion buttons -->
+        <div class="suggestions">
+            <button class="suggestion-btn" data-command="help">Help</button>
+            <button class="suggestion-btn" data-command="clear">Clear</button>
+            <button class="suggestion-btn" data-command="hello">Hello</button>
+        </div>
+
+        <div class="command-line">
+            <span class="prompt">&gt;</span>
+            <input type="text" class="command-input" id="commandInput" autofocus />
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

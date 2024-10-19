@@ -1,0 +1,107 @@
+@import url('https://fonts.cdnfonts.com/css/cascadia-code');
+
+:root {
+    --background-color: #1e1e1e; /* Dark background */
+    --border-color: rgba(255, 255, 255, 0.1); /* Subtle border color */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    color: white;
+    font-family: 'Cascadia Code', monospace; /* Use a monospaced font for terminal effect */
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 2px solid var(--border-color);
+    background-color: var(--background-color);
+    border-radius: 10px; /* Rounded corners */
+    width: 70vw;
+    height: 70vh;
+    padding: 20px; /* Add some padding */
+    overflow: auto; /* Scroll if content overflows */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+p {
+    margin: 0; /* Remove margin for <pre> elements */
+    white-space: pre-wrap; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words */
+}
+
+.command-line {
+    display: flex; /* Use flex to align the prompt and input */
+    align-items: center; /* Center vertically */
+    margin-top: 10px; /* Space above command line */
+}
+
+.prompt {
+    color: #0f0; /* Green prompt color */
+    margin-right: 5px; /* Space between prompt and input */
+}
+
+.command-input {
+    background: transparent; /* Transparent background */
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    color: white; /* White text color */
+    flex-grow: 1; /* Input takes up remaining space */
+    font-family: 'Cascadia Code', monospace; /* Use the same font */
+}
+
+.output {
+    white-space: pre-wrap; /* Keep the formatting */
+    margin-top: 10px; /* Space between input and output */
+    color: #fff; /* Green text color for output */
+    max-height: 70%; /* Limit the height of the output area */
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+.output::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.output::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Round the edges of the thumb */
+}
+
+.output::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color when hovered */
+}
+
+.output::-webkit-scrollbar-track {
+    background: #333; /* Color of the scrollbar track */
+    border-radius: 10px; /* Round the edges of the track */
+}
+
+.submitted-command {
+    color: #0f0;
+}
+
+.suggestions {
+    margin: 1rem 0; /* Space between buttons and output */
+}
+
+.suggestion-btn {
+    font-family: 'Cascadia Code', monospace; /* Use the same font */
+    background-color: #444; /* Dark button background */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 10rem; /* Rounded corners */
+    padding: 10px 15px; /* Button padding */
+    margin-right: 10px; /* Space between buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.suggestion-btn:hover {
+    background-color: #555; /* Darker background on hover */
+}
+
