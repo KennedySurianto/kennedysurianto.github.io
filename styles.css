@@ -23,7 +23,9 @@ body {
     border: 2px solid var(--border-color);
     background-color: var(--background-color);
     border-radius: 10px; /* Rounded corners */
-    width: 60vw;
+    width: 70vw;
+    max-width: 60rem;
+    min-width: 20rem;
     height: 70vh;
     padding: 20px; /* Add some padding */
     overflow: auto; /* Scroll if content overflows */
