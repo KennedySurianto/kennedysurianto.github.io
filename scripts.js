@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const commandInput = document.getElementById('commandInput');
     const outputDiv = document.getElementById('output');
     let autoClearEnabled = true;
+    const history = [];
+    let historyIndex = -1;
 
     // List of commands as JSON
     const commands = [
@@ -72,12 +74,31 @@ GitHub\t\t<a href="https://github.com/KennedySurianto" class="command-link" targ
         }
     ];
 
-    // Handle Enter key press in input
-    commandInput.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') { // Check if the Enter key was pressed
+    // Handle Enter key down in input
+    commandInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
             const command = commandInput.value.trim(); // Get and trim the input
-            processCommand(command); // Process the command
+            if (command !== '') {
+                history.push(command);
+                historyIndex = history.length; // Reset history index
+                processCommand(command); // Process the command
+            }
             commandInput.value = ''; // Clear the input field
+        } else if (event.key === 'ArrowUp') {
+            // Navigate up in history
+            if (historyIndex > 0) {
+                historyIndex--;
+                commandInput.value = history[historyIndex];
+            }
+        } else if (event.key === 'ArrowDown') {
+            // Navigate down in history
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                commandInput.value = history[historyIndex];
+            } else {
+                historyIndex = history.length; // Reset index if at the bottom
+                commandInput.value = ''; // Clear input if at the bottom
+            }
         }
     });
 
@@ -87,7 +108,7 @@ GitHub\t\t<a href="https://github.com/KennedySurianto" class="command-link" targ
         button.addEventListener('click', function () {
             const command = this.getAttribute('data-command'); // Get the command from data attribute
             commandInput.value = command; // Set the input value to the command
-            commandInput.dispatchEvent(new KeyboardEvent('keypress', { key: 'Enter' })); // Simulate Enter key press
+            commandInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' })); // Simulate Enter key press
             commandInput.focus(); // Set focus back to the input field
         });
     });
