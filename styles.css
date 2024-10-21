@@ -1,4 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/cascadia-code');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
     --background-color: #1e1e1e; /* Dark background */
@@ -43,6 +44,11 @@ button {
     font-size: 1rem;
 }
 
+.ks {
+    font-family: "Source Code Pro", monospace;
+    letter-spacing: 0.25rem;
+}
+
 .command-line {
     display: flex; /* Use flex to align the prompt and input */
     align-items: center; /* Center vertically */
@@ -69,6 +75,10 @@ button {
     color: #fff; /* Green text color for output */
     max-height: 70%; /* Limit the height of the output area */
     overflow-y: auto; /* Scroll if content overflows */
+}
+
+.output > div {
+    margin: 1rem 0;
 }
 
 .output::-webkit-scrollbar {
@@ -105,6 +115,7 @@ button {
     border-radius: 10rem; /* Rounded corners */
     padding: 10px 15px; /* Button padding */
     margin-right: 10px; /* Space between buttons */
+    margin-bottom: 5px;
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s; /* Smooth background color transition */
 }

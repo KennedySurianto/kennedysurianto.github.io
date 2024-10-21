@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 '<a href="#" class="command-link" data-command="experience">experience</a>\tList my work experience<br>' +
                 '<a href="#" class="command-link" data-command="education">education</a>\tList my education background<br>' +
                 '<a href="#" class="command-link" data-command="skills">skills</a>\t\tList my key skills<br>' +
-                '<a href="#" class="command-link" data-command="contact">contact</a>\t\tDisplay contact information<br>' +
-                '<a href="#" class="command-link" data-command="projects">projects</a>\tShow my key projects' 
+                '<a href="#" class="command-link" data-command="projects">projects</a>\tShow my key projects<br>' +
+                '<a href="#" class="command-link" data-command="contact">contact</a>\t\tDisplay contact information'
         },
         {
             command: 'clear',
@@ -31,27 +31,47 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             command: 'experience',
-            output: '- Part-time Software Lab Assistant at BINUS (2023 - Present)\n- Intern at TechCorp (2022)\n- Freelance Web Developer (2021 - Present)'
+            output: '- Intern at PT Digital Mediatama Maxima TBK (2022)\n- Part-time Software Lab Assistant at BINUS (2024 - Present)'
         },
         {
             command: 'education',
-            output: 'Bachelor of Information Systems, BINUS University (2020 - 2024)'
+            output: 'Student of Information Systems, BINUS University (2023 - Present)'
         },
         {
             command: 'skills',
-            output: '- Programming: JavaScript, Python, R, PHP\n- Web Development: HTML, CSS, Node.js, Laravel\n- Data Analysis: R, Python\n- Tools: Git, RapidMiner, Three.js'
+            output: `- Web Design \t\tHTML, CSS, JavaScript, Bootstrap, jQuery
+- Web Programming \tLaravel, PHP, NodeJS, NPM, ExpressJS
+- Database \t\tT-SQL, MySQL, SQLite, PostgreSQL, MongoDB
+- Tools \t\tFigma, Visual Paradigm, Postman, Eclipse
+- Others \t\tA&DS using C, OOP using Java, JavaFX, Git`
         },
         {
             command: 'contact',
-            output: 'Email: kennedy.surianto@example.com\nLinkedIn: linkedin.com/in/kennedysurianto\nGitHub: github.com/kennedysurianto'
+            output: `Email\t\t<a href="mailto:kennedysrnt@gmail.com" class="command-link" target="_blank">kennedysrnt@gmail.com</a>
+LinkedIn\t<a href="https://www.linkedin.com/in/kennedy-surianto/" class="command-link" target="_blank">https://www.linkedin.com/in/kennedy-surianto/</a>
+GitHub\t\t<a href="https://github.com/KennedySurianto" class="command-link" target="_blank">https://github.com/KennedySurianto</a>`
         },
         {
             command: 'projects',
-            output: '- Online Course Website: Built with Laravel and Bootstrap\n- 3D Classroom Simulation: Built using Three.js\n- Anime Dataset Visualization: Created using R'
-        },
+            output: `- <a href="https://github.com/kennedysurianto/pulse" class="command-link" target="_blank">Pulse</a>: Real-time messaging platform
+    NodeJS, ExpressJS, PostgreSQL
+
+- <a href="https://github.com/kennedysurianto/click-and-checkout" class="command-link" target="_blank">Click & Checkout</a>: Online Retail Platform
+    NodeJS, ExpressJS, PostgreSQL
+
+- <a href="https://github.com/kennedysurianto/artisan-fragrance-backend" class="command-link" target="_blank">Artisan Fragrance</a>: Online Fragrance Retail Platform
+    MERN Stack
+
+- <a href="https://github.com/kennedysurianto/cue-haven" class="command-link" target="_blank">Cue Haven</a>: Billiard Billing System
+    JavaFX, PostgreSQL
+
+- <a href="https://github.com/kennedysurianto/compgraphqc" class="command-link" target="_blank">A1305</a>: 3D Classroom Simulation
+    Three.js`
+        }
+        ,
         {
             command: 'autoclear',
-            output: `Auto-clear is ${(autoClearEnabled) ? "enabled" : "disabled"}.`,
+            output: '',
             action: 'autoclear'
         }
     ];
@@ -87,22 +107,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 return; // Exit function early
             } else if (matchedCommand.action === 'autoclear') {
                 autoClearEnabled = !autoClearEnabled;
+                matchedCommand.output = `Auto-clear is ${(autoClearEnabled) ? "enabled" : "disabled"}.`;
             }
-            
+
             // Check if autoclear is enabled
             if (autoClearEnabled) {
                 outputDiv.textContent = ''; // Clear the output
             }
-            
+
             // Display the command and its output in the output area
-            outputDiv.innerHTML += `<p class="submitted-command">&gt; ${command}</p><p>${matchedCommand.output}</p>`;
+            outputDiv.innerHTML += `<div><p class="submitted-command">&gt; ${command}</p><p>${matchedCommand.output}</p></div>`;
         } else {
             // Check if autoclear is enabled
             if (autoClearEnabled) {
                 outputDiv.textContent = ''; // Clear the output
             }
             // Handle unknown commands
-            outputDiv.innerHTML += `<p class="submitted-command">&gt; ${command}</p><p>Command not recognized: ${command}</p>`;
+            outputDiv.innerHTML += `<div><p class="submitted-command">&gt; ${command}</p><p>Command not recognized: ${command}</p></div>`;
         }
 
         outputDiv.scrollTop = outputDiv.scrollHeight; // Scroll to the bottom
@@ -124,21 +145,28 @@ function canvas() {
     const canvas = document.getElementById('matrixCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Set the canvas to full screen
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
     // Characters to display
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const fontSize = 16; // Size of the characters
-    const columns = Math.floor(canvas.width / fontSize); // Number of columns for the characters
+    let columns = Math.floor(canvas.width / fontSize); // Number of columns for the characters
 
     // Array to keep track of y positions of each column
-    const drops = Array.from({ length: columns }).fill(1); // Start each column at 1
+    let drops = Array(columns).fill(1); // Start each column at 1
+
+    function resizeCanvas() {
+        // Set canvas width and height to match the window size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Recalculate columns based on the new width
+        columns = Math.floor(canvas.width / fontSize);
+        // Reset drops array for the new columns
+        drops = Array(columns).fill(1);
+    }
 
     function draw() {
-        // Clear the canvas
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Slightly transparent to create a trail effect
+        // Clear the canvas with a slightly transparent black rectangle to create the trail effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.fillStyle = '#0F0'; // Green color for the characters
@@ -151,7 +179,7 @@ function canvas() {
 
             // Reset drop position if it reaches the bottom
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0; // Reset position
+                drops[i] = 0;
             }
 
             // Increment the drop position
@@ -159,6 +187,12 @@ function canvas() {
         }
     }
 
-    // Update the canvas every 50 milliseconds
+    // Add the event listener for window resize
+    window.addEventListener('resize', resizeCanvas);
+
+    // Initialize the canvas size when the page loads
+    resizeCanvas();
+
+    // Update the canvas every 50 milliseconds to animate the effect
     setInterval(draw, 50);
 }
