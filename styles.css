@@ -35,6 +35,14 @@ p {
     word-wrap: break-word; /* Break long words */
 }
 
+p, span, input {
+    font-size: 1.25rem;
+}
+
+button {
+    font-size: 1rem;
+}
+
 .command-line {
     display: flex; /* Use flex to align the prompt and input */
     align-items: center; /* Center vertically */
@@ -105,3 +113,19 @@ p {
     background-color: #555; /* Darker background on hover */
 }
 
+.command-link {
+    color: #3498db; /* Light blue color for the links */
+    text-decoration: none; /* Remove underline from the links */
+    font-weight: bold; /* Make the link text bold */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.command-link:hover {
+    text-decoration: underline; /* Add underline when the link is hovered */
+    color: #2980b9; /* Darken the link color on hover */
+}
+
+#matrixCanvas {
+    position: absolute;
+    z-index: -1;
+}
