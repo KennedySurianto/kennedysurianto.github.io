@@ -63,12 +63,8 @@ GitHub\t\t<a href="https://github.com/KennedySurianto" class="command-link" targ
     MERN Stack
 
 - <a href="https://github.com/kennedysurianto/cue-haven" class="command-link" target="_blank">Cue Haven</a>: Billiard Billing System
-    JavaFX, PostgreSQL
-
-- <a href="https://github.com/kennedysurianto/compgraphqc" class="command-link" target="_blank">A1305</a>: 3D Classroom Simulation
-    Three.js`
-        }
-        ,
+    JavaFX, PostgreSQL`
+        },
         {
             command: 'autoclear',
             output: '',
