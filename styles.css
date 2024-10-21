@@ -73,7 +73,7 @@ button {
     white-space: pre-wrap; /* Keep the formatting */
     margin-top: 10px; /* Space between input and output */
     color: #fff; /* Green text color for output */
-    max-height: 70%; /* Limit the height of the output area */
+    max-height: 60%; /* Limit the height of the output area */
     overflow-y: auto; /* Scroll if content overflows */
 }
 
@@ -139,4 +139,10 @@ button {
 #matrixCanvas {
     position: absolute;
     z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .suggestion-btn {
+        display: none;
+    }
 }
