@@ -106,6 +106,10 @@ GitHub\t\t<a href="https://github.com/KennedySurianto" class="command-link" targ
         } else if (event.key === 'Tab') {
             event.preventDefault(); // Prevent default tab behavior
 
+            if (commandInput.value.trim() === '') {
+                return;
+            }
+
             // Check if it's the first Tab press or subsequent presses
             if (suggestionIndex === -1) {
                 // First tab press: find all matching commands
