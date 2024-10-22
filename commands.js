@@ -27,7 +27,7 @@ export const commands = [
     },
     {
         command: 'education',
-        output: 'Student of Information Systems, BINUS University (2023 - Present)'
+        output: '- UPH College (2020 - 2023)\n- Information Systems, BINUS University (2023 - Present)'
     },
     {
         command: 'skills',
