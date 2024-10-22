@@ -31,11 +31,11 @@ export const commands = [
     },
     {
         command: 'skills',
-        output: `- Web Design \t\tHTML, CSS, JavaScript, Bootstrap, jQuery
-- Web Programming \tLaravel, PHP, NodeJS, NPM, ExpressJS
+        output: `- Frontend \t\tHTML, CSS, JavaScript, Bootstrap, jQuery
+- Backend \tLaravel, PHP, Node.js, NPM, Express.js
 - Database \t\tT-SQL, MySQL, SQLite, PostgreSQL, MongoDB
 - Tools \t\tFigma, Visual Paradigm, Postman, Eclipse
-- Others \t\tA&DS using C, OOP using Java, JavaFX, Git`
+- Others \t\tA&DS in C, OOP in Java, JavaFX`
     },
     {
         command: 'contact',
