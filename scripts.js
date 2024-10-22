@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoClearEnabled = true;
     const history = [];
     let historyIndex = -1;
+    let matchingCommands = []; // Store matching commands
+    let suggestionIndex = -1; // Track the current suggestion index
 
     // List of commands as JSON
     const commands = [
@@ -84,6 +86,8 @@ GitHub\t\t<a href="https://github.com/KennedySurianto" class="command-link" targ
                 processCommand(command); // Process the command
             }
             commandInput.value = ''; // Clear the input field
+            suggestionIndex = -1; // Reset suggestion index
+            matchingCommands = []; // Clear matching commands
         } else if (event.key === 'ArrowUp') {
             // Navigate up in history
             if (historyIndex > 0) {
@@ -98,6 +102,22 @@ GitHub\t\t<a href="https://github.com/KennedySurianto" class="command-link" targ
             } else {
                 historyIndex = history.length; // Reset index if at the bottom
                 commandInput.value = ''; // Clear input if at the bottom
+            }
+        } else if (event.key === 'Tab') {
+            event.preventDefault(); // Prevent default tab behavior
+
+            // Check if it's the first Tab press or subsequent presses
+            if (suggestionIndex === -1) {
+                // First tab press: find all matching commands
+                matchingCommands = commands.filter(cmd =>
+                    cmd.command.startsWith(commandInput.value)
+                );
+            }
+
+            // If we have matching commands, cycle through them
+            if (matchingCommands.length > 0) {
+                suggestionIndex = (suggestionIndex + 1) % matchingCommands.length; // Cycle index
+                commandInput.value = matchingCommands[suggestionIndex].command; // Set the command
             }
         }
     });
