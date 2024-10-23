@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const commandLinks = document.querySelectorAll('.command-link');
         commandLinks.forEach(link => {
             link.addEventListener('click', function (e) {
-                e.preventDefault();
                 const command = this.getAttribute('data-command');
                 processCommand(command);
             });

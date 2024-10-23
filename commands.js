@@ -31,8 +31,8 @@ export const commands = [
     },
     {
         command: 'skills',
-        output: `- Frontend \tHTML, CSS, JavaScript, Bootstrap, jQuery
-- Backend \tLaravel, PHP, Node.js, NPM, Express.js
+        output: `- Frontend \tHTML, CSS, JavaScript, Bootstrap, jQuery, React
+- Backend \tLaravel, PHP, Node.js, Express.js
 - Database \tT-SQL, MySQL, SQLite, PostgreSQL, MongoDB
 - Tools \tFigma, Visual Paradigm, Postman, Eclipse
 - Others \tA&DS in C, OOP in Java, JavaFX`
@@ -40,7 +40,6 @@ export const commands = [
     {
         command: 'contact',
         output: `<a href="https://www.linkedin.com/in/kennedy-surianto/" class="command-link" target="_blank">LinkedIn</a>
-<a href="mailto:kennedysrnt@gmail.com" class="command-link" target="_blank">Email</a>
 <a href="https://github.com/KennedySurianto" class="command-link" target="_blank">GitHub</a>`
     },
     {
