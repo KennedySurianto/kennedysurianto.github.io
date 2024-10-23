@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (commandInput.value.trim() === '') return;
 
             if (suggestionIndex === -1) {
-                matchingCommands = commands.filter(cmd => cmd.command.startsWith(commandInput.value));
+                matchingCommands = commands.filter(cmd => cmd.command.startsWith(commandInput.value.trim()));
             }
 
             if (matchingCommands.length > 0) {
